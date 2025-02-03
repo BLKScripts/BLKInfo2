@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLK Scripts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: white;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Gradient effects */
+        body::before, body::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        body::before {
+            background: radial-gradient(circle at top left, rgba(98, 47, 200, 0.15), transparent 50%);
+        }
+
+        body::after {
+            background: radial-gradient(circle at top right, rgba(47, 90, 200, 0.15), transparent 50%);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+            letter-spacing: -0.03em;
+        }
+
+        .main-btn {
+            background: transparent;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-weight: 600;
+            cursor: none;
+            transition: all 0.3s ease;
+        }
+
+        .main-btn:hover {
+            border-color: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            gap: 2rem;
+        }
+
+        .main-text {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.2;
+            max-width: 900px;
+            background: linear-gradient(to right, #fff, #a8a8a8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .info-text {
+            font-size: 1.25rem;
+            max-width: 600px;
+            color: #a8a8a8;
+            margin-bottom: 2rem;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .primary-btn, .secondary-btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: none;
+            transition: all 0.3s ease;
+        }
+
+        .primary-btn {
+            background: #6c2fff;
+            color: white;
+            border: none;
+        }
+
+        .primary-btn:hover {
+            background: #7d47ff;
+        }
+
+        .secondary-btn {
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .secondary-btn:hover {
+            border-color: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Bubble styles */
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            background: radial-gradient(circle at 30% 30%, #ffffff, #333333);
+            animation: float 15s ease-in-out infinite, fadeInOut 15s ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            50% {
+                transform: translateY(-20px) translateX(10px);
+            }
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.1;
+            }
+        }
+
+        /* Custom cursor */
+        #cursor {
+            width: 8px;
+            height: 8px;
+            background-color: white;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Click effect */
+        .click-effect {
+            position: fixed;
+            border: 2px solid white;
+            border-radius: 50%;
+            animation: clickEffect 0.5s ease-out;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes clickEffect {
+            0% {
+                width: 0px;
+                height: 0px;
+                opacity: 0.5;
+            }
+            100% {
+                width: 50px;
+                height: 50px;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="cursor"></div>
+    <div class="nav">
+        <a href="#" class="logo">blk.</a>
+        <button class="main-btn" onclick="goToMainPage()">Main</button>
+    </div>
+    <div class="container">
+        <h1 class="main-text">The Best Scripts Platform For Your Needs</h1>
+        <p class="info-text">BLK is your trusted platform for high-quality scripts tailored for your needs. Our experienced team ensures top-tier performance and security.</p>
+        <div class="buttons">
+            <button class="primary-btn" onclick="joinDiscord()">Join Discord</button>
+            <button class="secondary-btn" onclick="goToMainPage()">Learn More</button>
+        </div>
+        <div id="dollar-container"></div>
+    </div>
+    <script type="module">
+        function goToMainPage() {
+            window.location.href = 'https://blkscripts.github.io/BLK-Scripts/';
+        }
+        function joinDiscord() {
+            window.location.href = 'https://discord.gg/gXG2pjtpft';
+        }
+
+        // Bubble animation
+        function createBubble() {
+            const bubble = document.createElement('div');
+            bubble.classList.add('bubble');
+            
+            const size = Math.random() * 100 + 50;
+            bubble.style.width = `${size}px`;
+            bubble.style.height = `${size}px`;
+            
+            bubble.style.left = `${Math.random() * 100}vw`;
+            bubble.style.top = `${Math.random() * 100}vh`;
+            
+            document.body.appendChild(bubble);
+            
+            setTimeout(() => {
+                bubble.remove();
+            }, 15000);
+        }
+
+        function animateBubbles() {
+            createBubble();
+            setTimeout(animateBubbles, Math.random() * 3000 + 2000);
+        }
+
+        animateBubbles();
+
+        // Custom cursor
+        const cursor = document.getElementById('cursor');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Click effect
+        document.addEventListener('click', (e) => {
+            const clickEffect = document.createElement('div');
+            clickEffect.classList.add('click-effect');
+            clickEffect.style.left = e.clientX + 'px';
+            clickEffect.style.top = e.clientY + 'px';
+            document.body.appendChild(clickEffect);
+
+            setTimeout(() => {
+                clickEffect.remove();
+            }, 500);
+        });
+
+        import { createRoot } from 'react-dom/client';
+        import DollarModel from './components/dollar-model';
+
+        const container = document.getElementById('dollar-container');
+        const root = createRoot(container);
+        root.render(<DollarModel />);
+    </script>
+</body>
+</html>
+
